@@ -20,10 +20,10 @@
 
 
 
-  <div v-for="(k,index) in products" :key="index">
-    <img src="./assets/room0.jpg" alt="" class="room-img">
-    <h4 @click="modalopen = true">{{products[index]}}</h4>
-    <p>{{price[index]}} 만원</p>
+  <div v-for="(k,index) in rooms" :key="index">
+    <img :src="rooms[index].image" alt="" class="room-img">
+    <h4 @click="modalopen = true">{{rooms[index].title}}</h4>
+    <p>{{rooms[index].price}} 만원</p>
     <button @click="num[index] += 1">허위매물신고</button> <span>신고 수 : {{num[index]}}</span>
   </div>
 
@@ -32,12 +32,15 @@
 
 <script>
 
+import data from './components/oneroom.js'
+
 
 export default {
   name: 'App',
 
   data(){
     return{
+      rooms : data,
       modalopen : false,
       price : [60,70,80],
       products : ['역삼동원룸', '천호동원룸' , '마포구원룸'],
@@ -75,7 +78,9 @@ div {
   border-radius: 8px;
   padding: 20px;
 }
-
+h4 {
+  cursor: pointer;
+}
 
 
 
